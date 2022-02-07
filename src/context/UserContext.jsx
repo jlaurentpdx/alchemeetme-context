@@ -22,7 +22,9 @@ const UserProvider = ({ children }) => {
 const useUser = () => {
   const context = useContext(UserContext)
 
-  if (context === undefined) throw new Error('useUser is not defined')
+  if (context === undefined) {
+    throw new Error('useUser can not be used outside the context of UseProvider')
+  }
 
   return context
 }

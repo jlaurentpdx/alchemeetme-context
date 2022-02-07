@@ -1,4 +1,5 @@
 import { screen, render } from '@testing-library/react'
+import { UserProvider } from '../../context/UserContext'
 import Home from './Home'
 
 const user = {
@@ -13,7 +14,11 @@ const user = {
 }
 
 test('Should send a user object with all needed properties', async () => {
-  render(<Home user={user} />)
+  render(
+    <UserProvider>
+      <Home />
+    </UserProvider>
+  )
 
   expect(user).toHaveProperty('id')
   expect(user).toHaveProperty('name')
@@ -25,7 +30,11 @@ test('Should send a user object with all needed properties', async () => {
 })
 
 test('Should render the user profile', async () => {
-  render(<Home user={user} />)
+  render(
+    <UserProvider>
+      <Home />
+    </UserProvider>
+  )
 
   const { name, color, motto, likes } = user
 
